@@ -1,4 +1,4 @@
-name: Scheduled Job - Keep Render Alive
+name: Main-Keep Render Alive
 
 on:
   schedule:
