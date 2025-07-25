@@ -8,10 +8,7 @@ from routes.send_emails import send_subscription_email  # <-- new import
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:5173",
-    "https://jp-training.vercel.app"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
