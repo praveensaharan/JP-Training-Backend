@@ -1,0 +1,26 @@
+name: Schedule Email
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+  workflow_dispatch: {}          # Allows manual trigger
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Current Time
+        run: echo "The current time is $(date)"
+
+      - name: Curl to keep Render service awake
+        run: curl -s https://jp-training-backend.onrender.com/ > /dev/null
+
+      - name: Curl to Send Email
+        run: curl -s https://jp-training-backend.onrender.com/timetable/sync > /dev/null
