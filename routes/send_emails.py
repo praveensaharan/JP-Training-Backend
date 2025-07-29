@@ -14,7 +14,7 @@ def send_subscription_email():
             cursor.execute("""
                 SELECT date, starttime, endtime, room, remain 
                 FROM schedules 
-                WHERE remain > 0 
+                WHERE remain > 0 AND date > CURRENT_DATE + INTERVAL '1 day'
                 ORDER BY date, starttime
             """)
             slots = cursor.fetchall()
