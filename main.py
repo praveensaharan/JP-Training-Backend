@@ -3,8 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from routes.subscribe import router as subscribe_router
 from routes.unsubscribe import router as unsubscribe_router
 from routes.timetable import router as timetable_router
-from routes.emails import router as emails_router  # <-- new import
-from routes.send_emails import send_subscription_email  # <-- new import
+from routes.emails import router as emails_router 
+from routes.send_emails import send_subscription_email  
+from routes.book import router as book_router 
 
 app = FastAPI()
 
@@ -22,7 +23,8 @@ app.add_middleware(
 app.include_router(subscribe_router)
 app.include_router(unsubscribe_router)
 app.include_router(timetable_router)
-app.include_router(emails_router)  # <-- new router
+app.include_router(emails_router) 
+app.include_router(book_router)  
 
 
 
